@@ -1,28 +1,7 @@
 * {
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;
 }
 
-main {
-  height: 1000px;
-  width: 100%;
-}
-
-.right-side,
-.left-side {
-  display: inline-block;
-  height: 100%;
-  width: 50%;
-}
-
-.right-side {
-  background-color: blue;
-}
-
-.left-side {
-  background-color: orange;
-}
-
-div {
-  border: 1px solid black;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
