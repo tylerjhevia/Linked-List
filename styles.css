@@ -5,3 +5,19 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+h1 {
+  color: white;
+  margin: auto;
+  text-align: center;
+}
+
+.ll-logo {
+  height: 50px;
+  width: 50px;
+}
+
+.left-side {
+  background-color: #455A64;
+  height: 1000px;
+}
