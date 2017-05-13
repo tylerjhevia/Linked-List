@@ -33,3 +33,19 @@ h1 {
   float: left;
   height: 1000px;
 }
+
+form {
+  
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.enter-button {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
