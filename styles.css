@@ -17,6 +17,7 @@ h1 {
 .ll-logo {
   height: 50px;
   width: 50px;
+  padding-bottom: 5px 0;
 }
 
 .left-side {
