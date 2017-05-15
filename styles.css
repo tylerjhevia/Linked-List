@@ -117,6 +117,10 @@ button:hover {
   border: solid 1px #607d8b;
 }
 
+.website-info.read {
+  background-color: yellow;
+}
+
 .website-name {
   margin: 5px;
 }
