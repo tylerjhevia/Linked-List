@@ -34,18 +34,21 @@ h1 {
   height: 1000px;
 }
 
-form {
-  
-}
-
 input {
   display: block;
   margin: 0 auto;
   width: 80%;
 }
 
-.enter-button {
+.enter-button: {
   display: block;
   margin: 0 auto;
   width: 80%;
+}
+
+article {
+  background-color: white;
+  border: 1px solid orange;
+  height: 100px;
+  width: 100%;
 }
