@@ -1,7 +1,13 @@
 var websiteTitleInput = $('.website-title-input');
 var websiteURLInput = $('.website-url-input');
 var enterButton = document.querySelector('.enter-button');
-var alertMessage = 'Please enter a website name and a URL';
+
+  // function validateURL() {if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test($("#url").val())){
+  //     alert("valid URL");
+  // } else {
+  //     return alert("invalid URL");
+  // }}
+
 
 $(".website-title-input").keyup(function() {
   changeDisabledState();
@@ -15,6 +21,7 @@ $(".website-url-input").keyup(function() {
 enterButton.addEventListener('click', function() {
   event.preventDefault();
   changeDisabledState();
+  // validateURL();
   var websiteName = websiteTitleInput.val();
   var websiteURL = websiteURLInput.val();
   createBookmark(websiteName, websiteURL);
@@ -34,7 +41,7 @@ function clearInputFields() {
 function createBookmark(name, url) {
   $('.right-side').append(`<div class="website-info">
     <p class="website-name"> ${name} </p><hr>
-    <p class="website-url"> ${url} </p><hr>
+    <a href="${url}" target="_blank"  class="website-url"> ${url} </a><hr>
     <button class="read-button" type="submit" value="Read">Read</button>
     <button class="remove-button" type="submit" value="remove">remove</button>
   </div>`);
@@ -42,12 +49,13 @@ function createBookmark(name, url) {
 }
 
 
-//remove bookmark entirely
-$('.right-side').on('click', '.remove-button', function() {
-   $(this).parents('.website-info').remove();
+// mark button as read
+$('.right-side').on('click', 'button.read-button', function() {
+ $(this).toggleClass('read');
+ $(this).parent().toggleClass('backgroundColor');
 });
 
-// // mark button as read
-// $('.right-side').on('click', function() {
-//   $(this).toggleClass('read-button');
-// });
+//remove bookmark entirely
+$('.right-side').on('click', '.remove-button', function() {
+   $(this).parent('.website-info').remove();
+});

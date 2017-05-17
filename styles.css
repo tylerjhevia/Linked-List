@@ -69,7 +69,8 @@ button:hover {
   padding-right: 10px;
 }
 
-.enter-button {
+.enter-button,
+.clear-all-button {
   display: block;
   margin: 30px auto;
   width: 80%;
@@ -82,13 +83,15 @@ button:hover {
   font-size: 20px;
 }
 
-.enter-button:hover {
+.enter-button:hover,
+.clear-all-button:hover {
   text-decoration: none;
   background-color: #ffd773;
   color: #ffffff;
 }
 
-.enter-button:disabled {
+.enter-button:disabled,
+.clear-button:disabled {
   color: red;
   background-color: black;
 }
@@ -122,6 +125,10 @@ button:hover {
   border: solid 1px #607d8b;
 }
 
+.website-info.backgroundColor {
+ background-color: #f2f4f4;
+}
+
 .website-name {
   margin: 5px;
 }
@@ -139,10 +146,17 @@ button:hover {
   text-decoration: underline #ffc107;
 }
 
-@media (max-width: 700px) {
-  .right-side,
-  .left-side {
-    height:800px;
-    width: 100%;
-  }
+@media (max-width: 600px) {
+ .right-side,
+ .left-side {
+   height:800px;
+   width: 100%;
+ }
+
+ h1 {
+   font-size: 40px;
+ }
+ .ll-logo {
+   height: 40px;
+ }
 }
