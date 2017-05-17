@@ -15,7 +15,7 @@ body {
 
 form {
   position: relative;
-  top: 190px;
+  top: 150px;
 }
 
 h1 {
@@ -23,13 +23,11 @@ h1 {
   margin: 20px 0;
   text-align: center;
   position: relative;
-  top: 200px;
+  top: 100px;
   font-size: 65px;
 }
 
-/*font size of the h1 is expected to change based on responsiveness of website*/
-
-hr {
+hr{
   color: #cfd8dc;
   text-align: center;
 }
@@ -45,7 +43,7 @@ input {
 
 button {
   border: none;
-  background-color: #ffffff;
+  background-color: transparent;
   color: #455a64;
   font-size: 15px;
   text-decoration: underline #f2f4f4;
@@ -57,19 +55,21 @@ button:hover {
   text-decoration: underline #ffc107;
 }
 
+.read-button {
+  float: left;
+}
 .read-button.read {
   color: #f05a28;
-  background-color: #f2f4f4;
   text-decoration: none;
   font-weight: 800;
 }
 
-.delete-button {
+.remove-button {
   float: right;
-  padding-right: 10px;
+  margin-bottom: 0;
 }
 
-.enter-button {
+.enter-button, .clear-all-button {
   display: block;
   margin: 30px auto;
   width: 80%;
@@ -88,18 +88,26 @@ button:hover {
   color: #ffffff;
 }
 
+.clear-all-button:hover {
+  text-decoration: none;
+  background-color: #ffd773;
+  color: #ffffff;
+}
+
+
 .ll-logo {
-  height: 70px;
+  height: 65px;
   padding: 0;
 }
-/*size of the logo is expected to change based on responsiveness of website*/
 
 .left-side, .right-side {
   background-color: #455A64;
   width: 50%;
   float: left;
   height: 100%;
+  overflow: hidden;
 }
+
 
 .right-side {
   background-color: #CFD8DC;
@@ -112,13 +120,14 @@ button:hover {
   color: #455a64;
   font-weight: 800;
   font-size: 25px;
-  margin: 10px;
+  margin: 10px 10px 20px 10px;
   padding: 5px 10px;
   border: solid 1px #607d8b;
+  overflow: hidden;
 }
 
-.website-info.read {
-  background-color: yellow;
+.website-info.backgroundColor {
+  background-color: #f2f4f4;
 }
 
 .website-name {
@@ -136,4 +145,22 @@ button:hover {
   color: #455a64;
   font-weight: 800;
   text-decoration: underline #ffc107;
+}
+
+@media (max-width: 600px) {
+  .right-side {
+    height:800px;
+    width: 100%;
+  }
+  .left-side {
+    height: 800px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+  .ll-logo {
+    height: 40px;
+  }
 }
