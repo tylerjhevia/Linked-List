@@ -1,47 +1,70 @@
-var websiteName = $('.website-title-input').val();
-var websiteURL = $('.website-url-input').val();
-var enterButton = $('.enter-button');
-var bookmarks = [];
+var websiteTitleInput = $('.website-title-input');
+var websiteURLInput = $('.website-url-input');
+var enterButton = document.querySelector('.enter-button');
+var bookmarkCount = 0;
 
-$('.enter-button').on('click', function() {          // create new bookmark with inputted title and url
+
+  // function validateURL() {if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test($("#url").val())){
+  //     alert("valid URL");
+  // } else {
+  //     return alert("invalid URL");
+  // }}
+
+
+$(".website-title-input").keyup(function() {
+  changeDisabledState();
+})
+// Can I combine these two?
+$(".website-url-input").keyup(function() {
+  changeDisabledState();
+})
+
+// create new bookmark with inputted title and url
+enterButton.addEventListener('click', function() {
   event.preventDefault();
-  websiteName = $('.website-title-input').val();
-  websiteURL = $('.website-url-input').val();
-  console.log("hello");
+  // countBookmarks();
+  // validateURL();
+  var websiteName = websiteTitleInput.val();
+  var websiteURL = websiteURLInput.val();
+  createBookmark(websiteName, websiteURL);
+  changeDisabledState();
+  // clearing input fields on click
+})
+
+function changeDisabledState() {
+  if (websiteTitleInput.val() !== "" && websiteURLInput.val() !== "") { return enterButton.disabled = false }
+  return enterButton.disabled = true;
+}
+
+function clearInputFields() {
+  websiteTitleInput.val("");
+  websiteURLInput.val("");
+}
+
+function createBookmark(name, url) {
   $('.right-side').append(`<div class="website-info">
-    <p class="website-name"> ${websiteName} </p><hr>
-    <a class="website-url" href="${websiteURL}" target="_blank">${websiteURL}</a><hr>
+    <p class="website-name"> ${name} </p><hr>
+    <a href="${url}" target="_blank"  class="website-url"> ${url} </a><hr>
     <button class="read-button" type="submit" value="Read">Read</button>
-    <button class="remove-button" type="submit" value="Remove">Remove</button>
+    <button class="remove-button" type="submit" value="remove">Remove</button>
   </div>`);
-});
-
-//push each new card to an array
-var bookmarks = [];
-$('.enter-button').on('click', function() {
-    bookmarks.push($('.website-title-input').val());
-      console.log(bookmarks);
-});
-
-
-//write a counting function- count length of array and show #, run function every time the enter button is clicked
-//write a function on removal of card: get title, find title in array, remove from array completely
-//run count function again to reestablish length of array
-//display number on interface
-
-$('.enter-button').on('click', function() {      // clearing input fields on click
-  event.preventDefault();
-  websiteName = $('.website-title-input').val('');
-  websiteURL = $('.website-url-input').val('');
-});
+  clearInputFields();
+}
 
 // mark button as read
 $('.right-side').on('click', 'button.read-button', function() {
-  $(this).toggleClass('read');
-  $(this).parent().toggleClass('backgroundColor');
+ $(this).toggleClass('read');
+ $(this).parent().toggleClass('backgroundColor');
 });
 
 //remove bookmark entirely
 $('.right-side').on('click', '.remove-button', function() {
     $(this).parent('.website-info').remove();
+    countBookmarks();
+});
+
+//remove all read bookmarks
+$('.clear-all-button').on('click', function(event){
+  event.preventDefault();
+  $('.website-info').remove('.backgroundColor');
 });
