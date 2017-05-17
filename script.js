@@ -17,6 +17,7 @@ $('.enter-button').on('click', function() {          // create new bookmark with
 });
 
 //push each new card to an array
+var bookmarks = [];
 $('.enter-button').on('click', function() {
     bookmarks.push($('.website-title-input').val());
       console.log(bookmarks);
