@@ -8,35 +8,20 @@ var enterButton = document.querySelector('.enter-button');
   //     return console.log("invalid URL");
   // }}
 
-
-  var bookmarkCount = 0;
-  var readBookmarkCount = 0;
-  var unreadBookmarkCount= 0;
-
   function countReadBookmarks() {
-    readBookmarkCount += 1
     var readBookmarks = document.querySelector(".read-bookmarks");
-    return readBookmarks.innerHTML = readBookmarkCount;
-    }
+    return readBookmarks.innerHTML = document.querySelectorAll(".right-side .read").length;
+  }
 
 function countBookmarks() {
-  bookmarkCount += 1;
-  console.log(bookmarkCount);
   var bookmarks = document.querySelector(".bookmarks");
-  bookmarks.innerHTML = bookmarkCount
+  return bookmarks.innerHTML = document.querySelectorAll(".right-side .website-info").length;
 }
 
 function countUnreadBookmarks() {
-  unreadBookmarkCount = bookmarkCount - readBookmarkCount;
-  var unreadBookmarks = document.querySelector(".unread-bookmarks");
-  unreadBookmarks.innerHTML = unreadBookmarkCount;
-}
-
-function removeBookmarks() {
-  bookmarkCount -= 1;
-  console.log(bookmarkCount);
-  var bookmarks = document.querySelector(".bookmarks");
-  bookmarks.innerHTML = bookmarkCount
+  var totalBookmarks = parseInt(document.querySelector(".bookmarks").value);
+  var readBookmarks = parseInt(document.querySelector(".read-bookmarks").value);
+  document.querySelector(".unread-bookmarks").innerHTML = totalBookmarks - readBookmarks;
 }
 
 $(".website-title-input").keyup(function() {
@@ -55,7 +40,8 @@ enterButton.addEventListener('click', function() {
   createBookmark(websiteName, websiteURL);
   // counting bookmarks
   countBookmarks();
-  countUnreadBookmarks();
+  countReadBookmarks();
+  // countUnreadBookmarks();
   // clearing input fields on click
   changeDisabledState();
 })
@@ -86,18 +72,20 @@ $('.right-side').on('click', 'button.read-button', function() {
  $(this).toggleClass('read');
  $(this).parent().toggleClass('backgroundColor');
  countReadBookmarks();
- countUnreadBookmarks();
+ // countUnreadBookmarks();
 });
 
 //remove bookmark entirely
 $('.right-side').on('click', '.remove-button', function() {
    $(this).parent('.website-info').remove();
-   removeBookmarks();
-   countUnreadBookmarks();
+  //  removeBookmarks();
+  //  countUnreadBookmarks();
+  countReadBookmarks();
 });
 
 //remove all read bookmarks
 $('.clear-all-button').on('click', function(event){
  event.preventDefault();
  $('.website-info').remove('.backgroundColor');
+ countReadBookmarks();
 });
