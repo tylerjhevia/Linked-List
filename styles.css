@@ -15,7 +15,7 @@ body {
 
 form {
   position: relative;
-  top: 150px;
+  top: 190px;
 }
 
 h1 {
@@ -23,11 +23,11 @@ h1 {
   margin: 20px 0;
   text-align: center;
   position: relative;
-  top: 100px;
+  top: 180px;
   font-size: 65px;
 }
 
-hr{
+hr {
   color: #cfd8dc;
   text-align: center;
 }
@@ -55,22 +55,20 @@ button:hover {
   text-decoration: underline #ffc107;
 }
 
-.read-button {
-  float: left;
-}
 .read-button.read {
   color: #f05a28;
+  background-color: #f2f4f4;
   text-decoration: none;
   font-weight: 800;
 }
 
 .remove-button {
-  float: right;
-  margin-bottom: 0;
+ float: right;
+ margin-bottom: 0;
 }
 
-
-.enter-button, .clear-all-button {
+.enter-button,
+.clear-all-button {
   display: block;
   margin: 30px auto;
   width: 80%;
@@ -90,22 +88,14 @@ button:hover {
   color: #ffffff;
 }
 
-
-.clear-all-button:hover {
-  text-decoration: none;
-  background-color: #ffd773;
-  color: #ffffff;
-}
-
-
 .enter-button:disabled,
 .clear-button:disabled {
-  color: red;
-  background-color: black;
+  color: #ffffff;
+  background-color: #CFD8DC;
 }
 
 .ll-logo {
-  height: 65px;
+  height: 70px;
   padding: 0;
 }
 
@@ -113,12 +103,8 @@ button:hover {
   background-color: #455A64;
   width: 50%;
   float: left;
-  /*height: 100%;*/
-  overflow: hidden;
-  height: 1000px;
-
+  height: 2000px;
 }
-
 
 .right-side {
   background-color: #CFD8DC;
@@ -131,14 +117,13 @@ button:hover {
   color: #455a64;
   font-weight: 800;
   font-size: 25px;
-  margin: 10px 10px 20px 10px;
+  margin: 10px;
   padding: 5px 10px;
   border: solid 1px #607d8b;
-  overflow: hidden;
 }
 
 .website-info.backgroundColor {
-  background-color: #f2f4f4;
+ background-color: #f2f4f4;
 }
 
 .website-name {
@@ -158,20 +143,36 @@ button:hover {
   text-decoration: underline #ffc107;
 }
 
-@media (max-width: 600px) {
-  .right-side {
-    height:800px;
-    width: 100%;
-  }
-  .left-side {
-    height: 800px;
-    width: 100%;
-  }
+.bookmark-counter {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  display: inline-block
+  overflow: hidden;
+}
 
-  h1 {
-    font-size: 40px;
-  }
-  .ll-logo {
-    height: 40px;
-  }
+.parsley-error {
+  background-color: #F5C3CC;
+
+}
+
+.parsley-type {
+  color: #F21905;
+  text-align: center;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+ .right-side,
+ .left-side {
+   height:900px;
+   width: 100%;
+ }
+
+ h1 {
+   font-size: 40px;
+ }
+ .ll-logo {
+   height: 40px;
+ }
 }
