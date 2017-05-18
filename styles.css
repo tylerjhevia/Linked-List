@@ -103,7 +103,7 @@ button:hover {
   background-color: #455A64;
   width: 50%;
   float: left;
-  height: 2000px;
+  height: 1500px;
 }
 
 .right-side {
@@ -164,7 +164,7 @@ button:hover {
 @media (max-width: 600px) {
  .right-side,
  .left-side {
-   height:900px;
+   height:800px;
    width: 100%;
  }
 
