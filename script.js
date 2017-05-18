@@ -2,15 +2,9 @@ var websiteTitleInput = $('.website-title-input');
 var websiteURLInput = $('.website-url-input');
 var enterButton = document.querySelector('.enter-button');
 
-  // function validateURL() {if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test($("#url").val())){
-  //     alert("valid URL");
-  // } else {
-  //     return console.log("invalid URL");
-  // }}
-
-  function countReadBookmarks() {
-    var readBookmarks = document.querySelector(".read-bookmarks");
-    return readBookmarks.innerHTML = document.querySelectorAll(".right-side .read").length;
+function countReadBookmarks() {
+  var readBookmarks = document.querySelector(".read-bookmarks");
+  return readBookmarks.innerHTML = document.querySelectorAll(".right-side .read").length;
   }
 
 function countBookmarks() {
@@ -19,32 +13,12 @@ function countBookmarks() {
 }
 
 function countUnreadBookmarks() {
-  var totalBookmarks = parseInt(document.querySelector(".bookmarks").value);
-  var readBookmarks = parseInt(document.querySelector(".read-bookmarks").value);
-  document.querySelector(".unread-bookmarks").innerHTML = totalBookmarks - readBookmarks;
+  var totalBookmarks = parseInt(document.querySelectorAll(".website-info").length);
+  var readBookmarks = parseInt(document.querySelectorAll(".read").length);
+  var unreadBookmarkCount = totalBookmarks - readBookmarks;
+  var unreadBookmarks = document.querySelector('.unread-bookmarks');
+  return unreadBookmarks.innerHTML = unreadBookmarkCount;
 }
-
-$(".website-title-input").keyup(function() {
-  changeDisabledState();
-})
-// Can I combine these two?
-$(".website-url-input").keyup(function() {
-  changeDisabledState();
-})
-
-// create new bookmark with inputted title and url
-enterButton.addEventListener('click', function() {
-  event.preventDefault();
-  var websiteName = websiteTitleInput.val();
-  var websiteURL = websiteURLInput.val();
-  createBookmark(websiteName, websiteURL);
-  // counting bookmarks
-  countBookmarks();
-  countReadBookmarks();
-  // countUnreadBookmarks();
-  // clearing input fields on click
-  changeDisabledState();
-})
 
 function changeDisabledState() {
   if (websiteTitleInput.val() !== "" && websiteURLInput.val() !== "") { return enterButton.disabled = false }
@@ -66,26 +40,48 @@ function createBookmark(name, url) {
   clearInputFields();
 }
 
+$(".website-title-input").keyup(function() {
+  changeDisabledState();
+})
+
+$(".website-url-input").keyup(function() {
+  changeDisabledState();
+})
+
+// create new bookmark with inputted title and url
+enterButton.addEventListener('click', function() {
+  event.preventDefault();
+  var websiteName = websiteTitleInput.val();
+  var websiteURL = websiteURLInput.val();
+  createBookmark(websiteName, websiteURL);
+  // counting bookmarks
+  countBookmarks();
+  countReadBookmarks();
+  countUnreadBookmarks();
+  // clearing input fields on click
+  changeDisabledState();
+})
 
 // mark button as read
 $('.right-side').on('click', 'button.read-button', function() {
- $(this).toggleClass('read');
- $(this).parent().toggleClass('backgroundColor');
- countReadBookmarks();
- // countUnreadBookmarks();
+  $(this).toggleClass('read');
+  $(this).parent().toggleClass('backgroundColor');
+  countReadBookmarks();
+  countUnreadBookmarks();
 });
 
 //remove bookmark entirely
 $('.right-side').on('click', '.remove-button', function() {
-   $(this).parent('.website-info').remove();
-  //  removeBookmarks();
-  //  countUnreadBookmarks();
+  $(this).parent('.website-info').remove();
+  countUnreadBookmarks();
   countReadBookmarks();
+  countBookmarks();
 });
 
 //remove all read bookmarks
 $('.clear-all-button').on('click', function(event){
- event.preventDefault();
- $('.website-info').remove('.backgroundColor');
- countReadBookmarks();
+  event.preventDefault(event);
+  $('.website-info').remove('.backgroundColor');
+  countReadBookmarks();
+  countBookmarks();
 });
