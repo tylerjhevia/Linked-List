@@ -85,3 +85,5 @@ $('.clear-all-button').on('click', function(event){
   countReadBookmarks();
   countBookmarks();
 });
+
+$('#linkedlist').parsley();
