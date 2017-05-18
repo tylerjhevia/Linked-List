@@ -15,7 +15,7 @@ body {
 
 form {
   position: relative;
-  top: 190px;
+  top: 110px;
 }
 
 h1 {
@@ -23,7 +23,7 @@ h1 {
   margin: 20px 0;
   text-align: center;
   position: relative;
-  top: 180px;
+  top: 90px;
   font-size: 65px;
 }
 
@@ -153,7 +153,6 @@ button:hover {
 
 .parsley-error {
   background-color: #F5C3CC;
-
 }
 
 .parsley-type {
